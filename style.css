@@ -1,0 +1,84 @@
+/* Basic Page Styling */
+html,
+body {
+  margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  width: 100%;
+  height: 100%;
+  background-color: blue;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+section {
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Section-Specific Styling */
+.section-1 {
+  background-color: white;
+}
+
+.left-half {
+  width: 50dvw;
+  height: 100%;
+  background-color: orange;
+}
+.right-half {
+  width: 50%;
+  height: 100%;
+  background-color: orangered;
+}
+.section-2 {
+  background-color: #f2f2f2;
+}
+
+h1 {
+  font-size: 20rem;
+  color: #333;
+}
+
+h2 {
+  font-size: 6rem;
+  color: #333;
+  text-shadow: #333;
+}
+
+#triangleDev {
+  background-color: darkgreen;
+}
+
+/* 
+
+.section-3 {
+  background-color: #d0d0d0;
+}
+
+.blue-circle {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  border-radius: 50%;
+}
+.section-4 {
+  background-color: #c0c0c0;
+}
+.blue-background {
+  width: 100%;
+  height: 100%;
+  background-color: blue;
+}
+.section-5 {
+  background-color: #b0b0b0;
+} */
