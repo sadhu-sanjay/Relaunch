@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "new-beginnings",
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

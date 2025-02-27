@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GSAP Animation</title>
+    <style>
+      
+      body {
+        margin: 0;
+      }
+
+      .section-1 {
+        height: 100vh;
+        width: 100vw;
+        background-color: lightgray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+        position: relative; /* Important for the mask and pinning */
+        overflow: hidden;
+      }
+
+      .mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+      }
+
+      .left-mask,
+      .right-mask {
+        width: 50%;
+        height: 100%;
+        position: relative;
+        overflow: clip;
+      }
+
+      .left-mask {
+        background-color: lightblue;
+      }
+
+      .right-mask {
+        background-color: palegreen;
+      }
+      .section-2 {
+        height: 100vh;
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="section-1">
+      <div class="mask">
+        <div class="left-mask">
+          <h1 style="margin: auto;">RISE</h1>
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              right: -25%;
+              width: 50%;
+              aspect-ratio: 1;
+              border-radius: 50%;
+              transform: translateY(-50%);
+              background-color: lightcoral;
+            "
+          ></div>
+        </div>
+        <div class="right-mask">
+          <div
+            style="
+              position: absolute;
+              top: 50%;
+              left: -25%;
+              width: 50%;
+              aspect-ratio: 1;
+              border-radius: 50%;
+              transform: translateY(-50%);
+              background-color: palegreen;
+              background-color: lightcoral;
+            "
+          ></div>
+        </div>
+      </div>
+      <div style="margin: auto; width: 55%;">
+        <h2>The Courage to step into something new
+         the strength to face the unknown</h1>
+
+      </div>
+    </section>
+
+    <section style="position: relative;" class="section-2">
+
+      <div
+        class="centerCircle"
+        style="
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 500px;
+          aspect-ratio: 1;
+          border-radius: 50%;
+          background-color: lightblue;
+          transform: translateX(-50%) translateY(-50%);
+        "
+      ></div>
+
+      <!-- I need a triangle which needs to be pointed to the center of the circle from the the left side of the screen -->
+      <div class="triangleDiv" style="position: relative;left:100%; display: flex; justify-content: start; align-items: center;">
+        <div
+          style="
+            border-top: 50dvh solid transparent;
+            border-bottom: 50dvh solid transparent;
+            border-left: 25dvw solid lightcoral;
+          "
+        ></div>
+        <div
+        class="triangle2"
+          style="
+            border-top: 50dvh solid transparent;
+            border-bottom: 50dvh solid transparent;
+            border-left: 25dvw solid coral;
+          "
+        ></div>
+        <h2 style="margin: auto;">Turning Clarity into Results</h2>
+
+      </div>
+
+    </section>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+
+    <script>
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".section-1",
+          start: "top top",
+          end: "+=100%", // Pin for the duration of the viewport height
+          scrub: 1,
+          pin: true,
+        },
+      });
+
+      // Add the mask animations to the timeline
+      tl.to(".left-mask", { x: "-100%", ease: "power2.out" }).to(
+        ".right-mask",
+        { x: "100%", ease: "power2.out" },
+        "<"
+      );
+      // "<" means "at the same time as the previous animation"
+
+      let tl2 = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".section-2",
+          start: "top top",
+          end: "+=100%", // Pin for the duration of the viewport height
+          scrub: 1,
+          pin: true,
+        },
+      });
+
+      tl2.to(".centerCircle", {
+        scale: 4,
+        ease: "power2.out",
+      });
+
+      tl2.to(".centerCircle", {
+        scale: 1,
+        ease: "power2.out",
+        borderRadius: "0%",
+        width: "100%",
+        height: "100%",
+        scrub: 2,
+      });
+
+      tl2.to(".centerCircle", {
+        ease: "power2.out",
+        x: "-100%",
+        scrub: 2,
+      } )
+
+      .to(".triangleDiv", {
+        ease: "power2.out",
+        x: "-100%",
+        scrub: 2,
+      }, "<")
+
+      tl2.to(".triangleDiv", {
+        ease: "power2.out",
+        x: "-125%",
+        scrub: 2,
+      })
+      
+
+    </script>
+  </body>
+</html>
