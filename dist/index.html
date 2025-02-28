@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GSAP Animation</title>
+    <title>Welcome too...</title>
     <style>
       
       body {
@@ -46,9 +46,11 @@
       .right-mask {
         background-color: palegreen;
       }
+
       .section-2 {
         height: 100vh;
       }
+
     </style>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -56,7 +58,7 @@
     <section class="section-1">
       <div class="mask">
         <div class="left-mask">
-          <h1 style="margin: auto;">RISE</h1>
+          <h1 class="animate-text" style="margin: auto;">RISE</h1>
           <div
             style="
               position: absolute;
@@ -87,8 +89,8 @@
         </div>
       </div>
       <div style="margin: auto; width: 55%;">
-        <h2>The Courage to step into something new
-         the strength to face the unknown</h1>
+        <h2 >The Courage to step into something new
+         the strength to face the unknown</h2>
 
       </div>
     </section>
@@ -195,9 +197,23 @@
         ease: "power2.out",
         x: "-125%",
         scrub: 2,
-      })
-      
+      });
 
+      // Animate text on appear
+      gsap.utils.toArray(".animate-text").forEach((text) => {
+        gsap.from(text, {
+          scrollTrigger: {
+            trigger: text,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none none",
+          },
+          opacity: 0,
+          y: 50,
+          duration: 2,
+          ease: "power4-in",
+        });
+      });
     </script>
   </body>
 </html>
